@@ -231,31 +231,48 @@ ls [options]\\
 2）-a：当前目录下所有文件（包括可见文件和隐藏文件）。\\
 3）-l：当前目录下所有可见文件详细属性。\\
 4）-al：当前目录下所有文件的详细属性。
+\subsubsection{Linux文件权限相关指令}
+\paragragh{\underline{改变所属用户组{} ——chgrp}\\
+chgrp{} [-R] 账号名称{} 文件或目录\\
+-R：递归更改，更改目录下的所有文件和目录。\\
+\underline{改变文件所有者{} ——chown}\\
+1.chown{} [-R] 账号名称{} 文件或目录\\
+-R：递归更改，更改目录下的所有文件和目录。\\
+2.chown root:root 文件名称\\
+将该文件的所有者和用户组改回为root.\\
+\underline{改变权限{} ——chmod}\\
+1.数字类型改变权限：\\
+chgrp [-R] xyz(权限属性，分别代表所有者，用户组和其他人权限） 文件或目录\\
+-R：递归更改，更改目录下的所有文件和目录。\\
+
+\fbox{r=4,w=2,x=1}\\
+2.符号类型改变权限：
+
+
+
+}
+
 \subsubsection{切换目录——{} cd}
 cd{} [相对路径或绝对路径]\\
 \underline{"."和".."分别代表此层目录和上层目录。}\\
 1）cd{} $\sim${} ：回到自己的主文件夹。\\
 2）cd ..：回到目前所在目录的上层目录。\\
 3）cd -：回到刚才的目录。\\
-4）cd ../目标目录：相对路径的写法，可以由当前目录到达与其位于同一上层目录的目标目录。
+4）cd ../目标目录：相对路径的写法，可以由当前目录到达与其属于同一上层目录的目标目录。
 \subsubsection{复制，删除与移动——{} cp,rm,mv}
-\paragragh{cp{} [options] 源文件{} 目标文件\\
+\paragragh{1.cp{} [options] 源文件{} 目标文件\\
 1）-r：递归复制，可用来复制目录。\\
-2）-p ：连同文件属性一齐复制\\}
-\paragragh{rm{} [options]{} 文件或目录\\
+2）-p ：连同文件属性一齐复制\\
+2.rm{} [options]{} 文件或目录\\
 -r：递归删除，常用于目录删除。\\}
-\paragragh{mv{} 源文件{} 目标文件\\
-可以用来改名}
-\end{flushleft}
-\subsubsection{——{} cp,rm,mv}
+3.mv{} 源文件{} 目标文件\\
+可以用来改名。}
+\subsubsection{新建目录与删除空目录——{} mkdir,rmdir}
+\paragragh{mkdir [options] 目录名称\\
+-p ：可创建多层目录。\\}
+\paragragh{rmdir [options] 空目录名称\\
+-p：递归删除一系列空目录。\\}
 
-\paragragh{cp [options] 源文件{} 目标文件\\
-1）-r：递归复制，可用来复制目录。\\
-2）-p ：连同文件属性一齐复制\\}
-\paragragh{rm [options] 文件或目录\\
--r：递归删除，常用于目录删除。\\}
-\paragragh{mv 源文件{} 目标文件\\
-可以用来改名}
 \end{flushleft}
 
 
