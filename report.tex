@@ -10,7 +10,6 @@
 \usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  % \CJKnumber{12345}: 一万二千三百四十五
 \usepackage{CJKfntef}  %%实现对汉字加点、下划线等。
 \usepackage{pifont}  % \ding{}
-\usepackage{tcolorbox}
 % math
 \usepackage{amsmath,amsfonts,amssymb}
 % color
@@ -32,6 +31,7 @@
 \usepackage{booktabs}
 % code
 \usepackage{fancyvrb}
+\usepackage{listings}
 % title
 \usepackage{titlesec}
 % head/foot
@@ -42,7 +42,7 @@
 \usepackage[pagecolor={EYE}]{pagecolor}
 % tightly-packed lists
 \usepackage{mdwlist}
-
+\usepackage{verbatim}%comment命令的注释包
 \usepackage{styles/iplouccfg}
 \usepackage{styles/zhfontcfg}
 \usepackage{styles/iplouclistings}
@@ -109,48 +109,48 @@
   bipoles/length=.8cm
 }
 % code
-%\lstnewenvironment{VHDLcode}[1][]{%
-%  \lstset{
-%    basicstyle=\footnotesize\ttfamily\color{black},%
-%    columns=flexible,%
-%    framexleftmargin=.7mm,frame=shadowbox,%
-%    rulesepcolor=\color{blue},%
-%%    frame=single,%
-%    backgroundcolor=\color{yellow!20},%
-%    xleftmargin=1.2\fboxsep,%
-%    xrightmargin=.7\fboxsep,%
-%    numbers=left,numberstyle=\tiny\color{blue},%
-%    numberblanklines=false,numbersep=7pt,%
-%    language=VHDL%
-%    }\lstset{#1}}{}
-%\lstnewenvironment{VHDLmiddle}[1][]{%
-%  \lstset{
-%    basicstyle=\scriptsize\ttfamily\color{black},%
-%    columns=flexible,%
-%    framexleftmargin=.7mm,frame=shadowbox,%
-%    rulesepcolor=\color{blue},%
-%%    frame=single,%
-%    backgroundcolor=\color{yellow!20},%
-%    xleftmargin=1.2\fboxsep,%
-%    xrightmargin=.7\fboxsep,%
-%    numbers=left,numberstyle=\tiny\color{blue},%
-%    numberblanklines=false,numbersep=7pt,%
-%    language=VHDL%
-%    }\lstset{#1}}{}
-%\lstnewenvironment{VHDLsmall}[1][]{%
-%  \lstset{
-%    basicstyle=\tiny\ttfamily\color{black},%
-%    columns=flexible,%
-%    framexleftmargin=.7mm,frame=shadowbox,%
-%    rulesepcolor=\color{blue},%
-%%    frame=single,%
-%    backgroundcolor=\color{yellow!20},%
-%    xleftmargin=1.2\fboxsep,%
-%    xrightmargin=.7\fboxsep,%
-%    numbers=left,numberstyle=\tiny\color{blue},%
-%    numberblanklines=false,numbersep=7pt,%
-%    language=VHDL%
-%    }\lstset{#1}}{}
+\lstnewenvironment{VHDLcode}[1][]{%
+  \lstset{
+    basicstyle=\footnotesize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+\lstnewenvironment{VHDLmiddle}[1][]{%
+  \lstset{
+    basicstyle=\scriptsize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+\lstnewenvironment{VHDLsmall}[1][]{%
+  \lstset{
+    basicstyle=\tiny\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
 % pdf
 \hypersetup{pdfpagemode=FullScreen,%
             pdfauthor={Haiyong Zheng},%
@@ -183,9 +183,9 @@
 \setlength{\headheight}{15pt}
 \pagestyle{fancy}
 \fancyhf{}
-
+%\lhead{\color{black!50!green}2014年秋季学期}
 \chead{\color{black!50!green}Learning report}
-
+%\rhead{\color{black!50!green}通信电子电路}
 \lfoot{\color{blue!50!green}TangNing}
 \cfoot{\color{blue!50!green}\href{http://vision.ouc.edu.cn/~zhenghaiyong}{CVBIOUC}}
 \rfoot{\color{blue!50!green}$\cdot$\ \thepage\ $\cdot$}
@@ -199,12 +199,12 @@
 % \titlepage
 \title{\vspace{-2em}学习报告\vspace{-0.7em}}
 \author{汤宁}
-\date{}
+\date{\vspace{-0.7em}2015年10月\vspace{-0.7em}}
 %%---------------------------------------------------------------------
 \maketitle\thispagestyle{fancy}
 %%---------------------------------------------------------------------
 \maketitle
-\tableofcontents
+\tableofcontents 
 
 \section{Linux基础学习}
 \subsection{对Linux的一点小理解}
@@ -348,15 +348,11 @@ u——复原前一个操作\\
 :wq——保存后离开
 \end{flushleft}
 \subsection{学习Linux的心得体会}
-\begin{flushleft}
-在还没有接触Linux之前，我就已经听说过他的大名，但那个时候只是知道学习Linux有利于找工作罢了。而通过这段时间对Linux终端指令的学习，使我逐渐意识到Linux的强大之处。\\
-首先，Linux系统上的文件都是可以通过终端来进行更改设置的。之前我安装了Codeblocks和Opencv后，对两者的全局编译链接进行了设置，设置后发现虽然每次关闭Codeblocks前都有保存过，但是下次打开后之前设置的都不见了，后来在老师的帮助下才发现Codeblocks安装包的所有者和用户组都是root，也就是说以我本人的名义是不能对Codeblocks进行设置更改的，于是我更改了安装包的所有者和用户组，问题才得以解决。通过这个小问题，使我对Linux的态度产生了极大的转变，我觉得Linux系统上文件都可以更改这一点就能很好的体现出它的开源性，虽然这样也会增大一不小心改动系统文件导致系统发生故障的风险。如果单单通过图形界面来操作Linux的话虽然有的时候也许会很方便，但是遇到比如权限一类的问题，图形界面是行不通的，很显然在这种情况下，终端指令无疑是最好的选择。\\
-此外，Linux的保护功能也很强大，我的电脑安装了Win7和Ubuntu双系统后，在Win7界面下只能看到它自己的磁盘分区而在Ubuntu界面下不仅可以看到它自己的还可以看到win7的磁盘分区，不同的是在Ubuntu下所有数据都是以文件形式存在的。Linux独特的目录树形式和挂载来读取分区也是比较有意思的地方。\\
-总之，这段时间对Linux的学习虽然还不是那么深入，但也算是收获颇丰，同时我还明白了一个道理：要想学好Linux还是得通过不断的实践才能更好的使用它，另外思考每个命令代表的意义也是很重要的。
-\end{flushleft}
-
-
-
+在还没有接触Linux之前，我就已经听说过他的大名，但那个时候只是知道学习Linux有利于找工作罢了,而通过这段时间对Linux终端指令的学习，使我开始逐渐意识到Linux的强大之处。首先，Linux系统上的文件都是可以通过终端来进行更改设置的。之前我安装了Codeblocks和Opencv之后，对两者的全局编译链接进行了设置，设置后发现虽然每次关闭Codeblocks前都有保存过，但是下次打开后之前设置的都不见了，后来在老师的帮助下才发现Codeblocks安装包的所有者和用户组都是root，也就是说以我本人的名义是不能对Codeblocks进行设置更改的，于是我更改了安装包的所有者和用户组，问题才得以解决。通过这个小问题，使我对Linux的态度产生了极大的转变，我觉得Linux系统上文件都可以更改这一点就能很好的体现出它的开源性，虽然这样也会增大一不小心改动系统文件导致系统发生故障的风险。如果单单通过图形界面来操作Linux的话虽然有的时候也许会很方便，但是遇到比如权限一类的问题，图形界面是行不通的，很显然在这种情况下，终端指令无疑是最好的选择。此外，Linux的保护功能也很强大，我的电脑安装了Win7和Ubuntu双系统后，在Win7界面下只能看到它自己的磁盘分区而在Ubuntu界面下不仅可以看到它自己的还可以看到win7的磁盘分区，不同的是在Ubuntu下所有数据都是以文件形式存在的。Linux独特的目录树形式和挂载来读取分区也是比较有意思的地方。总之，这段时间对Linux的学习虽然还不是那么深入，但也算是收获颇丰，同时我还明白了一个道理：要想学好Linux还是得通过不断的实践才能更好的使用它，另外思考每个命令代表的意义也是很重要的。
+\section{学习\LaTeX{}的心得体会}
+\LaTeX{}是我最后安装的软件，我一直都觉得打印数学公式是一件很头疼的事情，最早的时候是从用word开始的,word中虽然带有大量数学公式可以编辑但是也有一部分不能修改，后来又知道有款专门打出数学公式的软件叫mathtype可以和word很好的结合，然而此款软件却需要付费。所以学习\Latex{} 之于我最主要的地方就是它能打出漂亮工整的数学公式,而如何使用\LaTeX{}来画出所需要的图表又是个大问题，在\LaTeX{}中比较简单的图表还是很容易可以得到的，而一旦遇到不规则表格，\LaTeX{}繁琐的代码就让我痛不欲生了。但是很显然它又有一个优势就是图形种类繁多，只有不会实现的没有实现不出来的。同时\LaTeX{}强大的排版方式也是word望尘莫及的，使用word对长篇文章进行排版时很多文本参数需要不断的手工调整，而相反使用\LaTeX{}排版时各种细节都可以统一规划设置，比较格式化。此外，\LaTeX{}与word相比显然排版更加正式，更适合论文和书籍的发表。总之，\LaTeX{}的功能还是很强大的，对于撰写学术论文无疑是最好的选择。
+\section{github的学习}
+\subsection{github
 
 
 
